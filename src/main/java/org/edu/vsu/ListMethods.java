@@ -9,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class ListMethods {
     List<Integer> list;
-    static int COUNT;
+    final int COUNT;
     /**
      * Конструктор, создающий экземпляр списка указанного типа и устанавливающий количество операций.
      *
