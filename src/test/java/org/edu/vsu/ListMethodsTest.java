@@ -2,10 +2,7 @@ package org.edu.vsu;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -53,6 +50,20 @@ class ListMethodsTest {
             expected.add(i);
         arrayListMethods.addByValue();
         assertIterableEquals(expected,arrayListMethods.list);
+    }
+    @Test
+    void addToRandomArrayList() {
+        arrayListMethods.addToRandom();
+        for(int i = 0; i < 10; i++){
+            assertTrue(arrayListMethods.list.contains(i));
+        }
+    }
+    @Test
+    void addToRandomLinkedList() {
+        linkedListMethods.addToRandom();
+        for(int i = 0; i < 10; i++){
+            assertTrue(linkedListMethods.list.contains(i));
+        }
     }
     @Test
     void deleteFromHeadLinked() {
@@ -110,9 +121,7 @@ class ListMethodsTest {
         arrayListMethods.clear();
         assertEquals(0, arrayListMethods.list.size());
     }
-
-
-    int[] arrayInAscendingOrder = {0,1,2,3,4,5,6,7,8,9};
+    private int[] arrayInAscendingOrder = {0,1,2,3,4,5,6,7,8,9};
     @Test
     void compareLess() {
         for(int i = 0; i<arrayInAscendingOrder.length-1; i++){

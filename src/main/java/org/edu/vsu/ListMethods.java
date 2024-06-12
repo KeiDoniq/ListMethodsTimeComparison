@@ -3,6 +3,7 @@ package org.edu.vsu;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * Класс-обертка, содержащий методы для работы с List.
  */
@@ -49,14 +50,15 @@ public class ListMethods {
      */
     public void addToMidd(){
         for(int i = 0; i < COUNT; i++)
-            list.add(i%2, i);
+            list.add((i / 2 + i %2), i);
     }
     /**
      * Добавляет элементы в рандомные позиции списка.
      */
     public void addToRandom(){
-        for(int i = 0; i<COUNT;i++) {
-            list.add(ThreadLocalRandom.current().nextInt(list.size()), i);
+        list.add(0);
+        for(int i = 1; i<COUNT;i++) {
+            list.add(ThreadLocalRandom.current().nextInt(i), i);
         }
     }
     /**
@@ -72,24 +74,25 @@ public class ListMethods {
      */
     public void deleteByValue(){
         for(int i = 0; i<COUNT;i++) {
-            list.remove(i);
+            list.remove(Integer.valueOf(i));
         }
     }
     /**
      * Удаление элементов из начала списка.
      */
     public void deleteFromHead(){
-        for(int i = 0; i<COUNT;i++) {
-            list.removeFirst();
+        for(int i = 0; i<COUNT; i++) {
+            list.remove(0);
         }
     }
     /**
      * Удаление элементов из середины списка.
      */
     public void deleteFromMidd(){
-        for(int i = 0; i<COUNT;i++) {
-            list.remove((list.size() % 2));
+        while(list.size() > 1) {
+            list.remove((list.size() / 2 + list.size() %2));
         }
+        list.remove(0);
     }
     /**
      * Удаление элементов с конца списка.
